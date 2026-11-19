@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BizTech & Trade Hub | Modern Business Education</title>
+    <!-- Google Fonts for Modern Formal Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-blue: #0F172A;
+            --accent-blue: #2563EB;
+            --gold: #D97706;
+            --gold-light: #F59E0B;
+            --beige: #F8F6F0;
+            --beige-dark: #EFECE6;
+            --white: #FFFFFF;
+            --text-dark: #1E293B;
+            --text-muted: #64748B;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--beige);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- NAVIGATION BAR --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--white);
+            padding: 0.6rem 1.4rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.2);
+            transition: var(--transition);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(217, 119, 6, 0.35);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #1E3A8A 100%);
+            color: var(--white);
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+        }
+
+        .hero-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content h1 span {
+            color: var(--gold-light);
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #CBD5E1;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--gold);
+            color: var(--white);
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #B45309;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold-light);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 3px solid rgba(217, 119, 6, 0.3);
+        }
+
+        /* --- SECTIONS GENERAL --- */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header span {
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-top: 0.5rem;
+        }
+
+        /* --- MODULES / ED-TECH CARDS --- */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border: 1px solid var(--beige-dark);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-color: var(--gold);
+        }
+
+        .card-img {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .card-body h3 {
+            font-size: 1.35rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .card-body p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex: 1;
+        }
+
+        .card-link {
+            color: var(--primary-blue);
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .card-link:hover {
+            color: var(--gold);
+            gap: 0.75rem;
+        }
+
+        /* --- TRADE MARKET & NEWS TICKER --- */
+        .news-section {
+            background-color: var(--white);
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--beige-dark);
+        }
+
+        .news-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--beige-dark);
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-meta {
+            font-size: 0.85rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .news-title {
+            font-size: 1.15rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .news-title:hover {
+            color: var(--accent-blue);
+        }
+
+        /* --- INTERACTIVE QUIZ SECTION --- */
+        .quiz-container {
+            background: linear-gradient(135deg, var(--primary-blue), #1E3A8A);
+            color: var(--white);
+            border-radius: 20px;
+            padding: 4rem;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+            max-width: 900px;
+            margin: 4rem auto;
+            border: 2px solid rgba(217, 119, 6, 0.3);
+        }
+
+        .quiz-question {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .quiz-option {
+            background: rgba(255, 255, 255, 0.07);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+            color: var(--white);
+            text-align: left;
+        }
+
+        .quiz-option:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--gold);
+        }
+
+        .quiz-option.selected {
+            background: var(--gold);
+            border-color: var(--gold-light);
+        }
+
+        .quiz-option.correct {
+            background: #10B981 !important;
+            border-color: #34D399 !important;
+        }
+
+        .quiz-option.incorrect {
+            background: #EF4444 !important;
+            border-color: #F87171 !important;
+        }
+
+        .quiz-score {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gold-light);
+            margin-top: 1rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+            border-top: 4px solid var(--gold);
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-info p {
+            color: #94A3B8;
+            margin-top: 1rem;
+            max-width: 350px;
+        }
+
+        .footer-links h4 {
+            color: var(--gold);
+            margin-bottom: 1.25rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #94A3B8;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: #64748B;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .nav-links {
+                display: none;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-chart-line" style="color: var(--gold);"></i>
+                BizTech<span>Hub</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#overview" class="active">Overview</a></li>
+                <li><a href="#modules">Ed-Tech Curriculums</a></li>
+                <li><a href="#news">Trade News</a></li>
+                <li><a href="#quiz">Skill Assessment</a></li>
+            </ul>
+            <a href="#quiz" class="nav-btn">Take Quiz</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="overview">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Shaping the Future of <span>Business Technology</span> & Trade</h1>
+                <p>Empowering professionals, educators, and global traders with modern Ed-Tech tools, real-time market insights, and formal executive skills.</p>
+                <div class="hero-buttons">
+                    <a href="#modules" class="btn-primary">Explore Programs</a>
+                    <a href="#news" class="btn-outline">Market Updates</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80" alt="Business Technology Education">
+            </div>
+        </div>
+    </section>
+
+    <!-- ED-TECH MODULES -->
+    <section id="modules">
+        <div class="section-header">
+            <span>Advanced Curriculum</span>
+            <h2>Business Education Technology</h2>
+        </div>
+        <div class="grid-3">
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Financial Analytics" class="card-img">
+                <div class="card-body">
+                    <span class="card-tag">FinTech & Analytics</span>
+                    <h3>Algorithmic Trade & Data Modeling</h3>
+                    <p>Learn advanced Python, SQL, and quantitative modeling tools used by institutional traders worldwide.</p>
+                    <a href="#" class="card-link" onclick="alert('Module enrolment initialized!')">Start Module <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Cloud ERP" class="card-img">
+                <div class="card-body">
+                    <span class="card-tag">Enterprise Tech</span>
+                    <h3>Cloud ERP & Supply Chain Systems</h3>
+                    <p>Master modern enterprise resource planning architectures and automated global supply chain tracking.</p>
+                    <a href="#" class="card-link" onclick="alert('Module enrolment initialized!')">Start Module <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=600&q=80" alt="Blockchain Markets" class="card-img">
+                <div class="card-body">
+                    <span class="card-tag">Global Markets</span>
+                    <h3>Digital Assets & Smart Contracts</h3>
+                    <p>Understand the regulatory frameworks, smart contract security, and tokenized trade market innovations.</p>
+                    <a href="#" class="card-link" onclick="alert('Module enrolment initialized!')">Start Module <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRADE MARKET NEWS -->
+    <section id="news">
+        <div class="section-header">
+            <span>Global Intelligence</span>
+            <h2>Trade Market News & Updates</h2>
+        </div>
+        <div class="news-section">
+            <div class="news-item">
+                <div>
+                    <div class="news-meta">Global Trade • Nov 12, 2026</div>
+                    <a href="#" class="news-title">Cross-Border Digital Settlement Systems See Record Adoption in Q4</a>
+                </div>
+                <button class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;" onclick="alert('Full article loaded.')">Read</button>
+            </div>
+            <div class="news-item">
+                <div>
+                    <div class="news-meta">Ed-Tech Innovation • Nov 10, 2026</div>
+                    <a href="#" class="news-title">AI-Driven Business Simulations Transforming Executive Training Programs</a>
+                </div>
+                <button class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;" onclick="alert('Full article loaded.')">Read</button>
+            </div>
+            <div class="news-item">
+                <div>
+                    <div class="news-meta">Market Economics • Nov 08, 2026</div>
+                    <a href="#" class="news-title">Central Banks Expand Digital Currency Pilots for International Clearing</a>
+                </div>
+                <button class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;" onclick="alert('Full article loaded.')">Read</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE QUIZ -->
+    <section id="quiz">
+        <div class="quiz-container">
+            <div class="section-header" style="margin-bottom: 2rem;">
+                <span style="color: var(--gold-light);">Test Your Expertise</span>
+                <h2 style="color: var(--white);">Business Tech & Trade Quiz</h2>
+            </div>
+            <div id="quiz-box">
+                <div class="quiz-question" id="question-text">Loading question...</div>
+                <div class="quiz-options" id="options-container"></div>
+                <div class="quiz-score" id="score-display"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <a href="#" class="logo" style="color: var(--white);">
+                    <i class="fa-solid fa-chart-line" style="color: var(--gold);"></i>
+                    BizTech<span>Hub</span>
+                </a>
+                <p>Dedicated to advancing business education technology, bridging academic theory with institutional trade market realities.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#modules">Curriculums</a></li>
+                    <li><a href="#news">Market News</a></li>
+                    <li><a href="#quiz">Quiz Assessment</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Legal & Contact</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Institutional Inquiries</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 BizTech & Trade Hub. All rights reserved. Designed with modern formal standards.
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Interactive Quiz Engine
+        const quizData = [
+            {
+                question: "What does ERP stand for in enterprise business technology?",
+                options: [
+                    "Enterprise Resource Planning",
+                    "Electronic Revenue Protocol",
+                    "Executive Risk Processing",
+                    "Enterprise Ratio Prediction"
+                ],
+                correct: 0
+            },
+            {
+                question: "Which technology is primarily utilized for immutable, decentralized smart contracts in trade?",
+                options: [
+                    "Cloud Computing",
+                    "Blockchain",
+                    "Relational SQL Databases",
+                    "Optical Fiber Switching"
+                ],
+                correct: 1
+            },
+            {
+                question: "In algorithmic trading, what does latency refer to?",
+                options: [
+                    "The transaction fee percentage",
+                    "The time delay in executing data transmissions or trades",
+                    "The volume of shares traded daily",
+                    "The overall profit margin"
+                ],
+                correct: 1
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answered = false;
+
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const scoreDisplay = document.getElementById('score-display');
+
+        function loadQuiz() {
+            answered = false;
+            const q = quizData[currentQuestion];
+            questionText.textContent = `Q${currentQuestion + 1}: ${q.question}`;
+            optionsContainer.innerHTML = '';
+            scoreDisplay.textContent = `Score: ${score} / ${quizData.length}`;
+
+            q.options.forEach((option, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'quiz-option';
+                btn.textContent = option;
+                btn.addEventListener('click', () => selectOption(index));
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        function selectOption(selectedIndex) {
+            if (answered) return;
+            answered = true;
+
+            const q = quizData[currentQuestion];
+            const optionButtons = optionsContainer.children;
+
+            if (selectedIndex === q.correct) {
+                optionButtons[selectedIndex].classList.add('correct');
+                score++;
+            } else {
+                optionButtons[selectedIndex].classList.add('incorrect');
+                optionButtons[q.correct].classList.add('correct');
+            }
+
+            scoreDisplay.textContent = `Score: ${score} / ${quizData.length}`;
+
+            setTimeout(() => {
+                currentQuestion++;
+                if (currentQuestion < quizData.length) {
+                    loadQuiz();
+                } else {
+                    questionText.textContent = "Quiz Completed! Outstanding job on evaluating your business tech acumen.";
+                    optionsContainer.innerHTML = `<button class="btn-primary" onclick="restartQuiz()">Restart Quiz</button>`;
+                }
+            }, 2000);
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            loadQuiz();
+        }
+
+        // Initialize quiz on load
+        loadQuiz();
+    </script>
+</body>
+</html>
